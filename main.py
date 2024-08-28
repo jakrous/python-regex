@@ -2,9 +2,9 @@ import re
 import json
 
 
-def find_matches(pattern, test_string):
+def find_matches(pattern, test_string, flags=0):
     # Compile the pattern
-    compiled_pattern = re.compile(pattern)
+    compiled_pattern = re.compile(pattern, flags)
 
     # Initialize an empty list to hold match details
     matches = []
@@ -42,5 +42,6 @@ def find_matches(pattern, test_string):
 # Example usage
 pattern = "gray|grey"
 test_string = "there is a grey fox in the gray building"
-json_result = find_matches(pattern, test_string)
+flags = re.IGNORECASE | re.MULTILINE
+json_result = find_matches(pattern, test_string, flags)
 print(json_result)
